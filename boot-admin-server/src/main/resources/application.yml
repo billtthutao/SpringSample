@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: bootAdminServer
+        
+  cloud:
+    config:
+      uri: http://localhost:8888

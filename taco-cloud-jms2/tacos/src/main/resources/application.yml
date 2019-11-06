@@ -1,0 +1,9 @@
+taco:
+  orders:
+    page-size: 2
+    
+spring:
+  data:
+    rest:
+      base-path: /api
+      

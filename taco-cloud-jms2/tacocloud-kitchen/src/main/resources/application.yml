@@ -1,0 +1,27 @@
+server:
+  port: 8081
+
+spring:
+  profiles:
+    active:
+    - jms-template
+
+    
+---
+spring:
+  profiles: jms-template, jms-listener
+# The values given here are actually the default values. But they are explicitly
+# set here as an example of setting the Artemis properties.
+  jms:
+    template:
+      receive-timeout: 2
+      
+
+  artemis:
+    host: localhost
+    port: 61616
+    user: mq
+    password: 123
+    embedded:
+      enabled: false
+     

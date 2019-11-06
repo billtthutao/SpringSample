@@ -1,0 +1,15 @@
+server:
+  port: 7900
+spring:
+  application:
+    name: FileIntegration
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+          zk-nodes: localhost:2181
+          auto-create-topics: true
+      bindings:
+          mySinkInput:
+            destination: integration-demo

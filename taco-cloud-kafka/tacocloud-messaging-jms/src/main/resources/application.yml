@@ -1,0 +1,8 @@
+spring:  
+  artemis:
+    host: localhost
+    port: 61616
+    user: mq
+    password: 123
+    embedded:
+      enabled: false 

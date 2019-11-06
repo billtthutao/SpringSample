@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:aop="http://www.springframework.org/schema/aop"
+  xsi:schemaLocation="http://www.springframework.org/schema/aop 
+      http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <aop:aspectj-autoproxy />
+
+  <bean id="movie" class="tacos.Movie">
+    <constructor-arg value="#{T(System).out}" />
+  </bean>
+
+  <bean id="audience" class="tacos.Audience">
+    <constructor-arg value="#{T(System).out}" />
+  </bean>
+
+  <bean id="encoreableDelegate" class="tacos.DefaultEncoreable" />
+
+  <aop:config>
+    <aop:aspect ref="audience">
+	  <aop:pointcut id="thanks"
+          expression="execution(* tacos.Performance.perform())"/>
+            
+      <aop:before pointcut-ref="thanks" 
+          method="handClap"/>
+	  <aop:around pointcut-ref="thanks" 
+          method="watchPerformance"/>
+      <aop:after pointcut-ref="thanks" 
+          method="handClap"/>
+          
+      <aop:pointcut id="report"
+          expression="execution(* tacos.Performance.report(String)) and args(movieName)"/>
+          
+      <aop:before pointcut-ref="report" 
+          method="report"/>
+	  <aop:around pointcut-ref="report" 
+          method="watchPerformanceWithName"/>
+          
+      <aop:declare-parents types-matching="tacos.Performance+" 
+                           implement-interface="tacos.Encoreable"
+						   default-impl="tacos.DefaultEncoreable"
+	  />
+    </aop:aspect>
+  </aop:config>
+  
+</beans>

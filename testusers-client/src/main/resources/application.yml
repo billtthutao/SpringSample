@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: testclient-service
+    
+  profiles:
+    active:
+    - resttemplate
+    
+  cloud:
+    config:      
+      uri: http://localhost:8888
+      profile: resttemplate
+ 
+#following can be found in git application.xml, I put it here just for reference
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'
+#  endpoint:
+#    health:
+#      show-details: always    
+          

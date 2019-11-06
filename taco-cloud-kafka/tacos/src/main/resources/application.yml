@@ -1,0 +1,18 @@
+taco:
+  orders:
+    page-size: 2
+    
+spring:
+  data:
+    rest:
+      base-path: /api
+      
+  kafka:
+    bootstrap-servers:
+    - localhost:9092
+    template:
+      default-topic: tacocloud.orders.topic
+    producer:
+      key-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      

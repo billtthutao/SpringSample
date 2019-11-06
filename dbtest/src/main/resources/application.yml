@@ -1,0 +1,9 @@
+spring:
+  data:
+    cassandra:
+      keyspace-name: tacocloud
+      contact-points:
+      - localhost
+      schema-action: recreate-drop-unused
+      username: cassandra
+      password: cassandra

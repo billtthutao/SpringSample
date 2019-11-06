@@ -1,0 +1,28 @@
+1.Update C:\STS\workspace\taco-cloud\tacocloud-kitchen\src\main\resources\application.yml
+
+set the profile to jms / rabbitmq / kafka
+
+2. Update C:\STS\workspace\taco-cloud\tacocloud-web\pom.xml 
+
+Add related dependency. 
+
+JMS:
+		<dependency>
+			<groupId>sia</groupId>
+			<artifactId>tacocloud-messaging-jms</artifactId>
+			<version>${tacocloud.version}</version>
+		</dependency>
+
+Rabbitmq:
+		<dependency>
+			<groupId>sia</groupId>
+			<artifactId>tacocloud-messaging-rabbitmq</artifactId>
+			<version>${tacocloud.version}</version>
+		</dependency>
+
+Kafka:
+		<dependency>
+			<groupId>sia</groupId>
+			<artifactId>tacocloud-messaging-kafka</artifactId>
+			<version>${tacocloud.version}</version>
+		</dependency>
